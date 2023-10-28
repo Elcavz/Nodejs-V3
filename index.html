@@ -1,0 +1,51 @@
+  <input type="text" id="username"/>
+  <input type="text" id="password"/>
+  <button id="login">login</button>
+  <button id="register">register</button>
+
+  <script>
+  const loginBtn = document.getElementById('login')
+  loginBtn.onclick = function(){
+      const username = document.getElementById('username')
+      const password = document.getElementById('password')
+      fetch('http://localhost:3000/login', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              username: username.value,
+              password: password.value,
+          })
+      }).then(function(result){
+            return result.json()
+        }).then(function(result){
+            console.log('result: ', result)
+        })
+  }
+
+  const registerBtn = document.getElementById('register')
+  registerBtn.onclick = function(){
+      const username = document.getElementById('username')
+      const password = document.getElementById('password')
+      fetch('http://localhost:3000/register', {
+          method: 'post',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              username: username.value,
+              password: password.value,
+          })
+      }).then(function(result){
+            return result.json()
+        }).then(function(result){
+            console.log('result: ', result)
+        })
+  }
+
+
+
+  </script>

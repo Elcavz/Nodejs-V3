@@ -24,9 +24,13 @@ regBtn.onclick = function() {
     }).then(function(data) {
         const usernameExist = document.getElementById('usernameExist')
         const username = document.getElementById('username')
+        let userSpan = document.getElementById('userSpan');
+        let uName = document.getElementById('userName');
+        
         if (data.success) {
             usernameExist.innerHTML = ""
-            alert('Successfuly Registered')
+            userSpan.innerHTML = uName.value
+            $('#myModal').modal('toggle')
         } else {
             username.classList.add('m-0');
             usernameExist.innerHTML = "Username already exists"
